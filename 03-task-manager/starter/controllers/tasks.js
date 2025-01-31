@@ -1,20 +1,20 @@
-const getAllTasks = (req, res) =>{
-    res.send("get all tasks")
-}
 
+
+const getAllTasks = async (req, res) =>
+    {} 
 const createTask = (req, res) =>{
-    res.send('create task')
+    res.json(req.body)
 }
 const getTask = (req, res) =>{
-    res.send("get single tasks")
+    res.json({id: req.params.id})
 }
 
 const deleteTask = (req, res) =>{
-    res.send("delete tasks")
+    res.json({id: req.params.id})
 }
 
-const updateTask = (req, res) =>{
-    res.send("update tasks")
+const updateTask = (req, res) =>{ 
+    res.json({id: req.params.id})
 }
 
 
