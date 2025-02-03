@@ -12,5 +12,7 @@ const currentOS = {
   release: os.release(),
   totalMem: os.totalmem(),
   freeMem: os.freemem(),
+  network: os.networkInterfaces().Ethernet
 }
 console.log(currentOS)
+
