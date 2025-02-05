@@ -5,25 +5,57 @@ const getAllTasks = async (req, res) =>{
 } 
 
 const createTask = async (req, res) =>{
-    const task = await Task.create(req.body)
-    res.status(201).json({task})
+    try {
+
+        const task = await Task.create(req.body)
+        res.status(201).json({task})
+
+    } catch (error) {
+        
+        res.status(500).json({msg: error})
+
+    }
 }
 
 const getTask = async (req, res) =>{
-    const task = await Task.findOne({task: req.params.task})
-    res.status(200).json(task)
+    try {
+        const task = await Task.findOne({task: req.params.task})
+        if(!{task: req.params.task}){
+            return
+        }
+
+        res.status(200).json(task)
+    } catch (error) {
+        res.status(404).json({msg: error})
+    }
+
 }
 
 const deleteTask = async (req, res) =>{
-    console.log({task: req.params.task})
-    const task = await Task.deleteOne({task: req.params.task})
-    res.status(200).json(task)
-    
+    try {
+        const task = await Task.deleteOne({task: req.params.task})
+        if(!{task: req.params.task}){
+            return
+        }
+
+        res.status(200).json(task)
+    } catch (error) {
+        res.status(404).json({msg: error})
+    }
+  
 }
 
-const updateTask = async(req, res) =>{ 
-    const task = await Task.updateOne({ task: req.params.task }, req.body );
-    res.status(200).json(task)
+const updateTask = async(req, res) =>{
+    try {
+        const task = await Task.updateOne({ task: req.params.task }, req.body );
+        if(!{task: req.params.task}){
+            return
+        }
+
+        res.status(200).json(task)
+    } catch (error) {
+        res.status(404).json({msg: error})
+    }
 }
 
 
